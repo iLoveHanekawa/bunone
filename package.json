@@ -7,13 +7,17 @@
     "bun-types": "latest"
   },
   "scripts": {
-    "start": "bun run index.ts",
+    "start": "bun --hot run index.ts",
     "build": "bun build index.ts"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "figlet": "^1.7.0"
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.17",
+    "figlet": "^1.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
