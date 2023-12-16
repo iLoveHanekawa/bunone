@@ -23471,7 +23471,7 @@ var require_jsx_dev_runtime = __commonJS((exports, module) => {
   }
 });
 
-// script.tsx
+// pages/index.tsx
 var ReactDOM = __toESM(require_client(), 1);
 
 // App.tsx
@@ -23479,23 +23479,10 @@ var import_react = __toESM(require_react(), 1);
 var jsx_dev_runtime = __toESM(require_jsx_dev_runtime(), 1);
 function App() {
   const [count, setCount] = import_react.default.useState(0);
-  return jsx_dev_runtime.jsxDEV("div", {
-    children: [
-      "Hello world",
-      jsx_dev_runtime.jsxDEV("div", {
-        onClick: () => {
-          setCount((i) => i + 1);
-        },
-        children: [
-          "Count is ",
-          count
-        ]
-      }, undefined, true, undefined, this)
-    ]
-  }, undefined, true, undefined, this);
+  return jsx_dev_runtime.jsxDEV(jsx_dev_runtime.Fragment, {}, undefined, false, undefined, this);
 }
 
-// script.tsx
+// pages/index.tsx
 var jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime(), 1);
 var root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(jsx_dev_runtime2.jsxDEV(App, {}, undefined, false, undefined, this));
