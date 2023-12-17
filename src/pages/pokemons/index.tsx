@@ -4,6 +4,7 @@ import React from 'react'
 import Pokemon, { PokemonType } from '../../../components/Pokemon';
 import * as ReactDOM from "react-dom/client";
 import Navbar from "../../../components/Navbar";
+import AddPokemonForm from '../../../components/AddPokemonForm';
 
 function Page() {
     const [loading, setLoading] = React.useState<boolean>(false);
@@ -26,10 +27,14 @@ function Page() {
                 <div className='spacer'></div>
                 <p className='description'>Browse our complete Pokémon list - catch 'em all in one place!</p>
             </div>
-            {loading && <div>Loading...</div>}
-            {pokemons.map(pokemon => {
-                return <Pokemon name={pokemon.name} type={pokemon.type} />
-            })}
+            <AddPokemonForm isLoading={loading} setLoading={setLoading} setPokemons={setPokemons} />
+            {loading && <div className='loading-spinner'></div>}
+            
+            <div className='pokemon-grid'>
+                {pokemons.map((pokemon, index) => {
+                    return <Pokemon key={index} name={pokemon.name} type={pokemon.type} />
+                })}
+            </div>
         </div>
 }
 const root = ReactDOM.createRoot(document.getElementById('root')!);

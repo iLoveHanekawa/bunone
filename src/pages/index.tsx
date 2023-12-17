@@ -13,7 +13,7 @@ function Page() {
                 <p className='description'>Your ultimate Pokémon companion app - catch, explore, and learn about all Pokémon effortlessly!</p>
             </div>
             <a href='http://localhost:8080/pokemons'>
-                <Button isPrimary={true}>Browse</Button>
+                <Button isLoading={false} isPrimary={true}>Browse</Button>
             </a>
         </div>
 }

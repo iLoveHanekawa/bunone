@@ -1,5 +1,6 @@
 import { Database } from 'bun:sqlite'
 import { getPokemons } from './controllers/getPokemons';
+import { addPokemon } from './controllers/addPokemon';
 
 const router = new Bun.FileSystemRouter({
     style: "nextjs",
@@ -18,6 +19,8 @@ DB.query(`CREATE TABLE IF NOT EXISTS pokemons (
   name TEXT,
   type TEXT
 );`).run();
+
+// DB.query(`DELETE FROM pokemons WHERE 1=1`).run();
 
 async function start() {
 
@@ -38,6 +41,9 @@ async function start() {
       const url = new URL(req.url);
       if(url.pathname === '/api/v1/pokemons') {
         return getPokemons();
+      }
+      else if(url.pathname === '/api/v1/pokemons/add' && req.method === 'POST') {
+        return addPokemon(req);
       }
       if(url.pathname === '/global.css') {
         return new Response(Bun.file('./public/global.css'));
