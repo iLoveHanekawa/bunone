@@ -1,9 +1,23 @@
+import { Database } from 'bun:sqlite'
+import { getPokemons } from './controllers/getPokemons';
+
 const router = new Bun.FileSystemRouter({
     style: "nextjs",
     dir: "./src/pages",
     origin: "http://localhost:3000",
     assetPrefix: "/build/pages"
 });
+
+const DB = new Database('bun.sqlite', {
+  create: true,
+  readwrite: true
+});
+
+DB.query(`CREATE TABLE IF NOT EXISTS pokemons (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  type TEXT
+);`).run();
 
 async function start() {
 
@@ -19,8 +33,12 @@ async function start() {
   const server = Bun.serve({
     port: 3000,
     async fetch(req: Request) {
+
       const rewriter = new HTMLRewriter();
       const url = new URL(req.url);
+      if(url.pathname === '/api/v1/pokemons') {
+        return getPokemons();
+      }
       if(url.pathname === '/global.css') {
         return new Response(Bun.file('./public/global.css'));
       }
