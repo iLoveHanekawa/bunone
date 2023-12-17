@@ -11,17 +11,20 @@ async function start() {
     return Bun.build({
       entrypoints: [router.routes[pathname]],
       outdir: './build' + pathname,
+      naming: 'index.js'
     });
   })
-
   Promise.all(builds);
-  
+
   const server = Bun.serve({
     port: 3000,
     async fetch(req: Request) {
       const rewriter = new HTMLRewriter();
       const url = new URL(req.url);
-      if (url.pathname.startsWith('/build')) {
+      if(url.pathname === '/global.css') {
+        return new Response(Bun.file('./public/global.css'));
+      }
+      else if (url.pathname.startsWith('/build')) {
         return new Response(Bun.file('./build' + url.pathname.substring(6)));
       }
       else if(url.pathname in router.routes) {

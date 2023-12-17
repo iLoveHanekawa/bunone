@@ -23471,7 +23471,7 @@ var require_jsx_dev_runtime = __commonJS((exports, module) => {
   }
 });
 
-// node_modules/schedu
+// node_modules/scheduler/cjs/s
 var ReactDOM = __toESM(require_client(), 1);
 
 // node_modules/schedule
@@ -23494,11 +23494,11 @@ function Navbar() {
   }, undefined, true, undefined, this);
 }
 
-// node_modules/schedu
+// node_modules/scheduler/cjs/s
 var jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime(), 1);
 var Page = function() {
   return jsx_dev_runtime2.jsxDEV("div", {
-    children: "This is home page content"
+    children: "This is all pokemons route"
   }, undefined, false, undefined, this);
 };
 var root = ReactDOM.createRoot(document.getElementById("root"));
