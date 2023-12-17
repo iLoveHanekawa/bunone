@@ -1,9 +1,6 @@
 /// <reference lib="dom" />
 /// <reference lib="dom.iterable" />
-import React from 'react'
-import * as ReactDOM from 'react-dom/client';
-import App from '../../App';
 
+import * as ReactDOM from "react-dom/client";
 const root = ReactDOM.createRoot(document.getElementById('root')!);
-
-root.render(<App />);
+root.render(<div>Hello world</div>);
