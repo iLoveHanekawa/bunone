@@ -1,5 +1,5 @@
 import React from "react";
-import { PokemonType } from '../components/Pokemon';
+import { PokemonType } from './Pokemon';
 import Button from "./Button";
 type AddPokemonFormType = {
     setPokemons: React.Dispatch<React.SetStateAction<PokemonType[]>>
@@ -7,7 +7,7 @@ type AddPokemonFormType = {
     isLoading: boolean
 }
 
-export default function AddPokemonForm({ setPokemons, setLoading, isLoading }: AddPokemonFormType) {
+export default function CatchPokemonForm({ setPokemons, setLoading, isLoading }: AddPokemonFormType) {
     
     const [pokeName, setPokeName] = React.useState<string>('');
     const [pokeType, setPokeType] = React.useState<string>('');
@@ -46,6 +46,6 @@ export default function AddPokemonForm({ setPokemons, setLoading, isLoading }: A
         <input className="poke-input" id="type" type="text" value={pokeType} onChange={(event) => {
             setPokeType(event.currentTarget.value);
         }} />
-        <Button isLoading={isLoading} isPrimary={false}>Add pokemon</Button>
+        <Button isLoading={isLoading} isPrimary={true}>Catch pokemon</Button>
     </form>
 }

@@ -6,7 +6,7 @@ export async function addPokemon(req: Request) {
         readwrite: true
     });
     let pokemon: PokemonType = await req.json();
-    DB.query(`INSERT INTO pokemons (name, type) VALUES ('${pokemon.name}', '${pokemon.type}');`).run();
+    DB.query(`INSERT INTO pokemons (name, type) VALUES ('${pokemon.name}', '${pokemon.type}');`).get();
     pokemon = DB.query(`SELECT * FROM pokemons WHERE name = '${pokemon.name}' AND type = '${pokemon.type}';`).get() as PokemonType;
     return new Response(JSON.stringify({ pokemon }), {
         headers: {

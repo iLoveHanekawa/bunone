@@ -14,9 +14,10 @@ export default function UpdatePokemonForm({ id, setPokemons }: UpdatePokemonForm
 
     async function updateSubmidHandler(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        setLoading(true);
         try {
             const response = await fetch('http://localhost:8080/api/v1/pokemons/update-name', {
-                method: "POST",
+                method: "PATCH",
                 body: JSON.stringify({
                     id: id,
                     name: nickname
@@ -27,7 +28,7 @@ export default function UpdatePokemonForm({ id, setPokemons }: UpdatePokemonForm
             });
             const data: { pokemon: PokemonType} = await response.json();
             setPokemons(pokemons => {
-                const index = pokemons.findIndex(pokemon => pokemon.id = data.pokemon.id);
+                const index = pokemons.findIndex(pokemon => pokemon.id === data.pokemon.id);
                 pokemons[index].name = data.pokemon.name;
                 return [...pokemons];
             })
@@ -48,7 +49,6 @@ export default function UpdatePokemonForm({ id, setPokemons }: UpdatePokemonForm
             setNickname(e.currentTarget.value);
         }} />
         <input type="text" hidden value={id} />
-        <Button isLoading={false} isPrimary={false}>Change nickname</Button>
-        {loading && <div className='loading-spinner'></div>}
+        <Button isLoading={loading} isPrimary={false}>Change nickname</Button>
     </form>
 }

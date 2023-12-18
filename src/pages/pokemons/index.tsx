@@ -4,7 +4,7 @@ import React from 'react'
 import Pokemon, { PokemonType } from '../../../components/Pokemon';
 import * as ReactDOM from "react-dom/client";
 import Navbar from "../../../components/Navbar";
-import AddPokemonForm from '../../../components/AddPokemonForm';
+import CatchPokemonForm from '../../../components/CatchPokemonForm';
 
 function Page() {
     const [loading, setLoading] = React.useState<boolean>(false);
@@ -27,7 +27,7 @@ function Page() {
                 <div className='spacer'></div>
                 <p className='description'>Browse our complete Pokémon list - catch 'em all in one place!</p>
             </div>
-            <AddPokemonForm isLoading={loading} setLoading={setLoading} setPokemons={setPokemons} />
+            <CatchPokemonForm isLoading={loading} setLoading={setLoading} setPokemons={setPokemons} />
             {loading && <div className='loading-spinner'></div>}
             
             <div className='pokemon-grid'>
