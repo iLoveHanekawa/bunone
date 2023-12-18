@@ -32,7 +32,7 @@ function Page() {
             
             <div className='pokemon-grid'>
                 {pokemons.map((pokemon, index) => {
-                    return <Pokemon key={index} name={pokemon.name} type={pokemon.type} />
+                    return <Pokemon setPokemons={setPokemons} key={index} id={pokemon.id} name={pokemon.name} type={pokemon.type} />
                 })}
             </div>
         </div>

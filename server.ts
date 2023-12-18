@@ -1,6 +1,7 @@
 import { Database } from 'bun:sqlite'
 import { getPokemons } from './controllers/getPokemons';
 import { addPokemon } from './controllers/addPokemon';
+import { updatePokemonName } from './controllers/updatePokemonName'
 
 const router = new Bun.FileSystemRouter({
     style: "nextjs",
@@ -44,6 +45,9 @@ async function start() {
       }
       else if(url.pathname === '/api/v1/pokemons/add' && req.method === 'POST') {
         return addPokemon(req);
+      }
+      else if(url.pathname === '/api/v1/pokemons/update-name' && req.method === 'POST') {
+        return updatePokemonName(req);
       }
       if(url.pathname === '/global.css') {
         return new Response(Bun.file('./public/global.css'));

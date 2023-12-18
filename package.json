@@ -7,7 +7,7 @@
     "bun-types": "latest"
   },
   "scripts": {
-    "start": "bun --watch run server.ts",
+    "start": "bun --hot run server.ts",
     "build": "bun build index.ts"
   },
   "peerDependencies": {
